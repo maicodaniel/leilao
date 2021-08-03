@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Pessoa;
 use Illuminate\Http\Request;
+use Carbon\Carbon;
 
 class PessoaController extends Controller
 {
@@ -14,7 +15,8 @@ class PessoaController extends Controller
      */
     public function index()
     {
-        //
+        $pessoas = Pessoa::all();
+        return view('Pessoa\\showAllPessoa', ['pessoa' => $pessoas]);
     }
 
     /**
@@ -24,7 +26,7 @@ class PessoaController extends Controller
      */
     public function create()
     {
-        //
+        return view('Pessoa\\createPessoa');
     }
 
     /**
@@ -35,7 +37,13 @@ class PessoaController extends Controller
      */
     public function store(Request $request)
     {
-        //
+
+        $user = new Pessoa();
+        $user->nome = $request->name;
+
+        $user->dtaNasc = $request->dataNascimento;
+
+        $user->save();
     }
 
     /**
@@ -46,7 +54,20 @@ class PessoaController extends Controller
      */
     public function show(Pessoa $pessoa)
     {
-        //
+        var_dump($pessoa);
+        $usuario = array();
+        $usuario['id'] = $pessoa->id;
+        $usuario['nome'] = $pessoa->nome;
+
+        $usuario['dtaNasc'] = $pessoa->dtaNasc;
+
+        $usuario['created_at'] = $pessoa->created_at;
+        $date1 = Carbon::create($pessoa->dtaNasc);
+        $date2 = Carbon::now();
+        $usuario['idade'] = $date1->diffInYears($date2);
+        $obj = (Object)$usuario;
+
+        return view('Pessoa\\showPessoa', ['pessoa' => $obj]);
     }
 
     /**
@@ -80,6 +101,7 @@ class PessoaController extends Controller
      */
     public function destroy(Pessoa $pessoa)
     {
-        //
+        $pessoa->delete();
+        return redirect()->route('pessoa.index');
     }
 }

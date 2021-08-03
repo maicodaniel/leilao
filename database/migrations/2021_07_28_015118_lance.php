@@ -14,7 +14,7 @@ class Lance extends Migration
     public function up()
     {
         Schema::create('lance', function (Blueprint $table) {
-            $table->bigIncrements('id_Lance');
+            $table->bigIncrements('id');
             $table->unsignedBigInteger('Pessoa_Lance');
             $table->unsignedBigInteger('Produto_Lance');
             $table->double('valor_inicial');
@@ -22,8 +22,8 @@ class Lance extends Migration
             $table->timestamp('hora_lance');
             $table->timestamps();
 
-            $table->foreign('Pessoa_Lance')->references('id_Pessoa')->on('pessoa');
-            $table->foreign('Produto_Lance')->references('id_Produto')->on('produtos');
+            $table->foreign('Pessoa_Lance')->references('id')->on('pessoa');
+            $table->foreign('Produto_Lance')->references('id')->on('produtos');
         });
     }
 

@@ -16,3 +16,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::resource('pessoa', App\Http\Controllers\PessoaController::class);
+Route::resource('produtos', App\Http\Controllers\ProdutosController::class);
+Route::resource('lance', App\Http\Controllers\LanceController::class);

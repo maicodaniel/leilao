@@ -14,7 +14,7 @@ class Pessoa extends Migration
     public function up()
     {
         Schema::create('pessoa', function (Blueprint $table) {
-            $table->bigIncrements('id_Pessoa');
+            $table->bigIncrements('id');
             $table->string('nome');
             $table->date('dtaNasc');
             $table->timestamps();
