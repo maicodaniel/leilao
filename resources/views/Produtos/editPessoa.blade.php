@@ -8,14 +8,14 @@
                 <div class="card-header">{{ __('Cadastrar') }}</div>
 
                 <div class="card-body">
-                    <form method="POST" action="{{ route('pessoa.update',['pessoa'=> $pessoa->id]) }}">
+                    <form method="POST" action="{{ route('produtos.update',['produto'=> $produto->id]) }}">
                         @csrf
                         @method('put')
                         <div class="form-group row">
                             <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Nome') }}</label>
 
                             <div class="col-md-6">
-                                <input id="nome" type="text" class="form-control @error('nome') is-invalid @enderror" name="nome" value="{{ $pessoa->nome }}" required autocomplete="nome" autofocus>
+                                <input id="nome" type="text" class="form-control @error('nome') is-invalid @enderror" name="nome" value="{{ $produto->nome }}" required autocomplete="nome" autofocus>
 
                                 @error('nome')
                                     <span class="invalid-feedback" role="alert">
@@ -27,12 +27,12 @@
 
 
                         <div class="form-group row">
-                            <label for="dataNascimento" class="col-md-4 col-form-label text-md-right">{{ __('Data de Nascimento') }}</label>
+                            <label for="valor" class="col-md-4 col-form-label text-md-right">{{ __('valor') }}</label>
 
                             <div class="col-md-6">
-                                <input id="dtaNasc" type="date" class="form-control @error('dtaNasc') is-invalid @enderror" name="dtaNasc" value="{{ $pessoa->dtaNasc }}" required autocomplete="name" autofocus>
+                                <input id="valor" type="number" class="form-control @error('dtaNasc') is-invalid @enderror" name="valor" value="{{ $produto->valor }}" required autocomplete="name" autofocus>
 
-                                @error('dtaNasc')
+                                @error('valor')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>

@@ -14,7 +14,8 @@ class ProdutosController extends Controller
      */
     public function index()
     {
-        //
+        $produtos = Produtos::all();
+        return view('Produtos\\showAllProdutos', ['produtos' => $produtos]);
     }
 
     /**
@@ -24,7 +25,7 @@ class ProdutosController extends Controller
      */
     public function create()
     {
-        //
+        return view('Produtos\\createProduto');
     }
 
     /**
@@ -35,7 +36,12 @@ class ProdutosController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $produto = new Produtos();
+        $produto->nome = $request->nome;
+
+        $produto->valor = $request->valor;
+
+        $produto->save();
     }
 
     /**
@@ -46,7 +52,7 @@ class ProdutosController extends Controller
      */
     public function show(Produtos $produtos)
     {
-        //
+        return view('Produtos\\showProduto', ['produto' => $produtos]);
     }
 
     /**

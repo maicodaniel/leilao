@@ -17,8 +17,8 @@ class Lance extends Migration
             $table->bigIncrements('id');
             $table->unsignedBigInteger('Pessoa_Lance');
             $table->unsignedBigInteger('Produto_Lance');
-            $table->double('valor_inicial');
-            $table->double('valor_final');
+            $table->decimal('valor_inicial', $precision = 8, $scale = 2);
+            $table->decimal('valor_final', $precision = 8, $scale = 2);
             $table->timestamp('hora_lance');
             $table->timestamps();
 

@@ -8,16 +8,15 @@
                 <div class="card-header">{{ __('Cadastrar') }}</div>
 
                 <div class="card-body">
-                    <form method="POST" action="{{ route('pessoa.update',['pessoa'=> $pessoa->id]) }}">
+                    <form method="POST" action="{{ route('produtos.store') }}">
                         @csrf
-                        @method('put')
                         <div class="form-group row">
-                            <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Nome') }}</label>
+                            <label for="nome" class="col-md-4 col-form-label text-md-right">{{ __('Nome') }}</label>
 
                             <div class="col-md-6">
-                                <input id="nome" type="text" class="form-control @error('nome') is-invalid @enderror" name="nome" value="{{ $pessoa->nome }}" required autocomplete="nome" autofocus>
+                                <input id="nome" type="text" class="form-control @error('nome') is-invalid @enderror" name="nome" value="{{ old('nome') }}" required autocomplete="name" autofocus>
 
-                                @error('nome')
+                                @error('name')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
@@ -27,12 +26,12 @@
 
 
                         <div class="form-group row">
-                            <label for="dataNascimento" class="col-md-4 col-form-label text-md-right">{{ __('Data de Nascimento') }}</label>
+                            <label for="valor" class="col-md-4 col-form-label text-md-right">{{ __('valor') }}</label>
 
                             <div class="col-md-6">
-                                <input id="dtaNasc" type="date" class="form-control @error('dtaNasc') is-invalid @enderror" name="dtaNasc" value="{{ $pessoa->dtaNasc }}" required autocomplete="name" autofocus>
+                                <input id="valor" type="number" min="0.00" class="form-control @error('valor') is-invalid @enderror" name="valor" value="{{ old('valor') }}" required autocomplete="name" autofocus>
 
-                                @error('dtaNasc')
+                                @error('valor')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
@@ -47,7 +46,7 @@
                         <div class="form-group row mb-0">
                             <div class="col-md-6 offset-md-4">
                                 <button type="submit" class="btn btn-primary">
-                                    {{ __('Salvar') }}
+                                    {{ __('Cadastrar') }}
                                 </button>
                             </div>
                         </div>

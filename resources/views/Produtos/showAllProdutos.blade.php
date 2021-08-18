@@ -1,42 +1,47 @@
+@extends('layout.adm')
 
-
-<?php $__env->startSection('content'); ?>
+@section('content')
     <div class="col ">
         <div class='row '>
             <div class="col-md-12 ">
                 <div class="card">
+                    @if(count($produtos) == 0 )
+                        <p>Não existem cadastros registrados</p>
+                    @else
                     <table id="table" class="tb hover dataTable table-striped no-footer" cellspacing="0" width="100%">
                         <thead>
                             <tr>
                                 <th>Nome</th>
-                                <th>Data de nascimento</th>
+                                <th>Valor</th>
                                 <th></th>
                             </tr>
                         </thead>
                         <tbody>
-                            <?php $__currentLoopData = $pessoa; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $pessoas): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                            @foreach($produtos as $produto )
                             <tr>
-                                <td><?php echo e($pessoas->nome); ?></td>
-                                <td><?php echo e(date('d/m/Y',strtotime($pessoas->dtaNasc))); ?></td>
+                                <td>{{$produto->nome}}</td>
+                                <td>{{$produto->valor}}</td>
 
                                 <td>
                                     <div class="row">
                                         <div>
-                                            <a class="btn btn-link" href="<?php echo e(route('pessoa.show',['pessoa' => $pessoas->id])); ?>">Detalhes</a>
+                                            <a class="btn btn-link" href="{{ route('produtos.show',['produto' => $produto->id]) }}">Detalhes</a>
                                         </div>
                                         <div>
-                                            <form method="POST" action="<?php echo e(route('pessoa.destroy',['pessoa'=>$pessoas->id])); ?>">
-                                                <?php echo csrf_field(); ?>
-                                                <?php echo method_field('delete'); ?>
+                                            <form method="POST" action="{{ route('produtos.destroy',['produto'=>$produto->id]) }}">
+                                                @csrf
+                                                @method('delete')
                                                 <button type="submit" class="btn btn-link">Remover</button>
                                             </form>
                                         </div>
                                     </div>
                                 </td>
                             </tr>
-                            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                            @endforeach
                         </tbody>
                     </table>
+                    @endif
+
                 </div>
                 <hr>
                 <div class="card-footer">
@@ -46,6 +51,4 @@
         </div>
     </div>
 
-<?php $__env->stopSection(); ?>
-
-<?php echo $__env->make('layout.adm', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH D:\RepositoriosGitHub\PHP\PHPSystem\LeilaoPhp\leilao\resources\views/Pessoa\showAllPessoa.blade.php ENDPATH**/ ?>
+@endsection

@@ -54,7 +54,7 @@ class PessoaController extends Controller
      */
     public function show(Pessoa $pessoa)
     {
-        var_dump($pessoa);
+
         $usuario = array();
         $usuario['id'] = $pessoa->id;
         $usuario['nome'] = $pessoa->nome;

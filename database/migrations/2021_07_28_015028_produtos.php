@@ -16,7 +16,7 @@ class Produtos extends Migration
         Schema::create('produtos', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('nome', 40);
-            $table->double('valor');
+            $table->decimal('valor', $precision = 8, $scale = 2);
             $table->timestamps();
         });
     }
