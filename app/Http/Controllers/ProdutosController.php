@@ -42,17 +42,19 @@ class ProdutosController extends Controller
         $produto->valor = $request->valor;
 
         $produto->save();
+
+        return redirect()->route('produtos.index');
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Produtos  $produtos
+     * @param  \App\Models\Produtos  $produto
      * @return \Illuminate\Http\Response
      */
-    public function show(Produtos $produtos)
+    public function show(Produtos $produto)
     {
-        return view('Produtos\\showProduto', ['produto' => $produtos]);
+        return view('Produtos\\showProduto', ['produto' => $produto]);
     }
 
     /**
@@ -63,7 +65,7 @@ class ProdutosController extends Controller
      */
     public function edit(Produtos $produtos)
     {
-        //
+        return view('Produtos.editProduto', ['produto' => $produtos]);
     }
 
     /**

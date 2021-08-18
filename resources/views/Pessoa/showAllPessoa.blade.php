@@ -40,7 +40,7 @@
                 </div>
                 <hr>
                 <div class="card-footer">
-                    <a href=#  class="nav-link">Home</a>
+                    <a href={{route('pessoa.create')}}  class="nav-link">Cadastrar</a>
                 </div>
             </div>
         </div>

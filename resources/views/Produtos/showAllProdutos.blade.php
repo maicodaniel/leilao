@@ -45,7 +45,7 @@
                 </div>
                 <hr>
                 <div class="card-footer">
-                    <a href=#  class="nav-link">Home</a>
+                    <a href={{route('produtos.create')}}  class="nav-link">Home</a>
                 </div>
             </div>
         </div>
