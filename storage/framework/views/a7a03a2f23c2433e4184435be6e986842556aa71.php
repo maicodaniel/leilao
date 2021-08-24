@@ -1,5 +1,3 @@
-
-
 <?php $__env->startSection('content'); ?>
     <div class="col ">
         <div class='row '>
@@ -40,7 +38,7 @@
                 </div>
                 <hr>
                 <div class="card-footer">
-                    <a href=#  class="nav-link">Home</a>
+                    <a href=<?php echo e(route('pessoa.create')); ?>  class="nav-link">Cadastrar</a>
                 </div>
             </div>
         </div>

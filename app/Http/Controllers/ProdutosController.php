@@ -60,34 +60,42 @@ class ProdutosController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Produtos  $produtos
+     * @param  \App\Models\Produtos  $produto
      * @return \Illuminate\Http\Response
      */
-    public function edit(Produtos $produtos)
+    public function edit(Produtos $produto)
     {
-        return view('Produtos.editProduto', ['produto' => $produtos]);
+
+        return view('Produtos.editProduto', ['produto' => $produto]);
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Produtos  $produtos
+     * @param  \App\Models\Produtos  $produto
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Produtos $produtos)
+    public function update(Request $request, Produtos $produto)
     {
-        //
+        $produto->nome = $request->nome;
+
+        $produto->valor = $request->valor;
+
+        $produto->save();
+
+        return redirect()->route('produtos.index');
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Produtos  $produtos
+     * @param  \App\Models\Produtos  $produto
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Produtos $produtos)
+    public function destroy(Produtos $produto)
     {
-        //
+        $produto->delete();
+        return redirect()->route('produtos.index');
     }
 }
