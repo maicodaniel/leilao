@@ -44,6 +44,7 @@ class PessoaController extends Controller
         $user->dtaNasc = $request->dataNascimento;
 
         $user->save();
+        return redirect()->route('pessoa.index');
     }
 
     /**

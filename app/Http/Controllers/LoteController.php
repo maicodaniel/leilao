@@ -2,12 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Lance;
+use App\Models\Lote;
 use Illuminate\Http\Request;
-use App\Models\Pessoa;
-use App\Models\Produtos;
 
-class LanceController extends Controller
+class LoteController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,9 +14,7 @@ class LanceController extends Controller
      */
     public function index()
     {
-        $lances = Lance::all();
-
-        return view('Lance.showAllLance', ['lances'=>$lances]);
+        //
     }
 
     /**
@@ -28,7 +24,7 @@ class LanceController extends Controller
      */
     public function create()
     {
-       $lance = new Lance();
+        return view('Lote.createLote');
     }
 
     /**
@@ -39,27 +35,28 @@ class LanceController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $lote = new Lote();
+
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Lance  $lance
+     * @param  \App\Models\Lote  $lote
      * @return \Illuminate\Http\Response
      */
-    public function show(Lance $lance)
+    public function show(Lote $lote)
     {
-        return view('Lance.showLance', ['lance' =>$lance]);
+        //
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Lance  $lance
+     * @param  \App\Models\Lote  $lote
      * @return \Illuminate\Http\Response
      */
-    public function edit(Lance $lance)
+    public function edit(Lote $lote)
     {
         //
     }
@@ -68,10 +65,10 @@ class LanceController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Lance  $lance
+     * @param  \App\Models\Lote  $lote
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Lance $lance)
+    public function update(Request $request, Lote $lote)
     {
         //
     }
@@ -79,10 +76,10 @@ class LanceController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Lance  $lance
+     * @param  \App\Models\Lote  $lote
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Lance $lance)
+    public function destroy(Lote $lote)
     {
         //
     }

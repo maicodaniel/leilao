@@ -5,30 +5,27 @@
         <div class='row '>
             <div class="col-md-12 ">
                 <div class="card">
-                    @if(count($produtos) == 0 )
-                        <p>Não existem cadastros registrados</p>
-                    @else
                     <table id="table" class="tb hover dataTable table-striped no-footer" cellspacing="0" width="100%">
                         <thead>
                             <tr>
                                 <th>Nome</th>
-                                <th>Valor</th>
+                                <th>Data de nascimento</th>
                                 <th></th>
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach($produtos as $produto )
+                            @foreach($pessoa as $pessoas )
                             <tr>
-                                <td>{{$produto->nome}}</td>
-                                <td>{{$produto->valor}}</td>
+                                <td>{{$pessoas->nome}}</td>
+                                <td>{{date('d/m/Y',strtotime($pessoas->dtaNasc))}}</td>
 
                                 <td>
                                     <div class="row">
                                         <div>
-                                            <a class="btn btn-link" href="{{ route('produtos.show',['produto' => $produto->id]) }}">Detalhes</a>
+                                            <a class="btn btn-link" href="{{ route('pessoa.show',['pessoa' => $pessoas->id]) }}">Detalhes</a>
                                         </div>
                                         <div>
-                                            <form method="POST" action="{{ route('produtos.destroy',['produto'=>$produto->id]) }}">
+                                            <form method="POST" action="{{ route('pessoa.destroy',['pessoa'=>$pessoas->id]) }}">
                                                 @csrf
                                                 @method('delete')
                                                 <button type="submit" class="btn btn-link">Remover</button>
@@ -40,12 +37,10 @@
                             @endforeach
                         </tbody>
                     </table>
-                    @endif
-
                 </div>
                 <hr>
                 <div class="card-footer">
-                    <a href={{route('produtos.create')}}  class="nav-link">Cadastrar</a>
+                    <a href={{route('pessoa.create')}}  class="nav-link">Cadastrar</a>
                 </div>
             </div>
         </div>
